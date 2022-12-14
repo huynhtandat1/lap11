@@ -35,7 +35,7 @@ insert KetQua values
 ('01','P',8),
 ('01','Q',7),
 ('02','P',8),
-('01','CL',5),
+('01','C',5),
 ('02','W',5)
 --1.Viết hàm diemtb dạng Scarlar function tính điểm trung bình của một sinh viên bất kỳ
 go
@@ -52,7 +52,7 @@ end
 go
 select dbo.diemtb ('01')
 --2.Viết hàm bằng 2 cách (table – value fuction và multistatement value function) tính điểm trung bình của cả lớp, thông tin gồm MaSV, Hoten, ĐiemTB, sử dụng hàm diemtb ở câu 1
-
+go
 --cách 1
 create function trbinhcalop(@malop char(5))
 returns table
@@ -78,7 +78,7 @@ end
 go
 select*from trbinhlop1('a')
 --3.Viết một thủ tục kiểm tra một sinh viên đã thi bao nhiêu môn, tham số là MaSV, VD sinh viên có MaSV=01thi 3 môn kết quả trả về chuỗi thông báo “Sinh viên 01 thi 3 môn” hoặc “Sinh viên 01 không thi môn nào
-
+go
 create proc ktra @msv char(5)
 as
 begin 
@@ -111,4 +111,4 @@ begin
  update lop
  set SiSo=@ss
  where malop in (select malop from inserted)
- end
+ end;
